@@ -19,15 +19,19 @@ class TagData(models.Model):
     tag_names = models.CharField(max_length=50,primary_key=True)
     tag = models.ManyToManyField(Blog,blank=True)
 
+class TagSearch(models.Model):
+    tag_search = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.search
 
 class TagDataForm(ModelForm):
     class Meta:
-        model = TagData
+        model = TagSearch
         fields = '__all__'
         
         widgets = {
-            "tag_names" : forms.TextInput(attrs={"class":"form-control"}),
+            "tag_search" : forms.TextInput(attrs={"class":"form-control"}),
         }
 
 

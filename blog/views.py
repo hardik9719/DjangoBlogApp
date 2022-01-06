@@ -2,7 +2,7 @@ from django.core.files.base import ContentFile
 from django.http import response
 from django.http.request import HttpHeaders
 from django.shortcuts import render
-from .models import Blog, TagData
+from .models import Blog, TagData, TagSearch
 from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
 
@@ -51,12 +51,13 @@ def blogs(request):
 def onTagSubmit(request):
     form = ""
     if request.method == "POST":
-        # data =  request.POST.items()[1:]
-        # print(request.META['HTTP_X_REQUESTED_WITH'])
-        headers = json.dumps(request.POST)        
-        print((headers))
-        print(type(headers))
-        data = TagDataForm(request.POST)
+        tag_search = request.POST.dict()['tag_search']
+        # # data =  request.POST.items()[1:]
+        # # print(request.META['HTTP_X_REQUESTED_WITH'])
+        # headers = json.dumps(request.POST)        
+        # print((headers))
+        # print(type(headers))
+        data = TagSearch(tag_search=tag_search)
         data.save()
         form = TagDataForm()
     else:
