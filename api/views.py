@@ -21,17 +21,17 @@ blogs =[
         'responses':'TP'
     },
 ]
-@api_view(['GET'])
-def about(request):
-    api_urls ={
-        'list':'/list_view',
-        'create':'/create_view'
-    }
-    return Response(api_urls)
+# @api_view(['GET'])
+# def about(request):
+#     api_urls ={
+#         'list':'/list_view',
+#         'create':'/create_view'
+#     }
+#     return Response(api_urls)
 
-@api_view(['GET'])
-def bloglist(request):
-    blogs = Blog.objects.all()
-    serializer = BlogSerializer(blogs)
-    context ={'blogs':blogs}
-    return render(request,'api/api-about.html',context)
+# # @api_view(['GET'])
+# def bloglist(request):
+#     blogs = Blog.objects.all()
+#     serializer = BlogSerializer(blogs)
+#     context ={'blogs':blogs}
+#     return render(request,'api/api-about.html',context)
