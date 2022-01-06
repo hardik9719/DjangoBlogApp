@@ -16,6 +16,7 @@ class Blog(models.Model):
 
 class TagData(models.Model):
     tag_id = models.IntegerField()
+    tag_names = models.CharField(max_length=50,primary_key=True)
     tag = models.ManyToManyField(Blog,blank=True)
 
 
@@ -23,10 +24,10 @@ class TagData(models.Model):
 class TagDataForm(ModelForm):
     class Meta:
         model = TagData
-        fields = ["tag"]
+        fields = '__all__'
         
         widgets = {
-            "tag" : forms.TextInput(attrs={"class":"form-control"}),
+            "tag_names" : forms.TextInput(attrs={"class":"form-control"}),
         }
 
 
