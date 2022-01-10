@@ -58,16 +58,19 @@
 
             {% endif %}
         </div>
-
+        {%if links%}
+        {%for link in links%}
         <div class="row">
             <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
+                  <h5 class="card-title">{{link.title}}</h5>
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                   <a href="#" class="btn btn-primary">Read More</a>
                 </div>
               </div>
         </div>
+        {%endfor%}
+        {%endif%}
     </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

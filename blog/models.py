@@ -23,7 +23,7 @@ class TagSearch(models.Model):
     tag_search = models.CharField(max_length=50)
 
     def __str__(self):
-        return self.search
+        return self.tag_search
 
 class TagDataForm(ModelForm):
     class Meta:

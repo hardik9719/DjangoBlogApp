@@ -72,6 +72,7 @@ def getBlogs(tag_search):
 def onTagSubmit(request):
     form = ""
     links = ""
+    context ={}
     if request.method == "POST":
         tag_search = request.POST.dict()['tag_search']
         # # data =  request.POST.items()[1:]
@@ -83,11 +84,15 @@ def onTagSubmit(request):
         data.save()
         links = getBlogs(tag_search)
         form = TagDataForm()
+        context['links'] = links
     else:
         form = TagDataForm()
 
+    context['form'] = form
+
     search_tag_history = TagSearch.objects.all()
-    context = {"form":form,"tags":search_tag_history,"links":links}
+    context['tags'] = search_tag_history
+    # context = {"form":form,"tags":search_tag_history,"links":links}
     return render(request,"blog/blogs.html",context)
 # def diplayData(tag_search):
 #     data = TagData.objects.all()
